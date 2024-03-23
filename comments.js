@@ -1,3 +1,17 @@
 // Create a web server.
-// Create a route for /comments that returns a list of comments.
-// Create a route for /comments/new that returns a form for submitting a comment.
+//==============================================================================
+
+// Import the express module.
+const express = require('express');
+const router = express.Router();
+const commentController = require('../controllers/commentController');
+const { get } = require('http');
+
+// Handle request
+router.get('/', commentController.getComments);
+router.get('/create', commentController.createComment);
+router.post('/', commentController.createComment);
+router.put('/', commentController.updateComment);
+router.delete('/', commentController.deleteComment);
+
+module.exports = router;
